@@ -1,0 +1,7 @@
+Conectar laravel con google login
+https://medium.com/employbl/add-login-with-google-to-your-laravel-app-d2205f01b895
+
+https://laravel.com/docs/5.6/socialite
+
+subir archivos vue + php
+https://stackoverflow.com/questions/47564003/how-do-i-store-files-in-vue-js
