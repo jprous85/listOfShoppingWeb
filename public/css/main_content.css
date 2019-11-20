@@ -14,3 +14,16 @@ color: #1b4b72;
 .text-title-navbar:hover {
     text-decoration: none;
 }
+
+.google-btn {
+    color: white;
+    background-color: #1f6fb2;
+    font-weight: bold;
+}
+
+.google-btn:hover {
+    color: white;
+    background-color: #386771;
+    font-weight: bold;
+    text-decoration: none;
+}
