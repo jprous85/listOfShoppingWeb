@@ -3,5 +3,7 @@ https://medium.com/employbl/add-login-with-google-to-your-laravel-app-d2205f01b8
 
 https://laravel.com/docs/5.6/socialite
 
+https://www.youtube.com/watch?v=yfxjGagtVeE
+
 subir archivos vue + php
 https://stackoverflow.com/questions/47564003/how-do-i-store-files-in-vue-js

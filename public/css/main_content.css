@@ -2,4 +2,15 @@
     width: 100vw;
 }
 
+.navbar-border-light {
+    border-bottom: 1px lightgray solid;
+}
 
+.text-title-navbar {
+text-decoration: none;
+color: #1b4b72;
+}
+
+.text-title-navbar:hover {
+    text-decoration: none;
+}
