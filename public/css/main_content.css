@@ -27,3 +27,12 @@ color: #1b4b72;
     font-weight: bold;
     text-decoration: none;
 }
+
+.color-login-text {
+    color: #1b4b72;
+}
+.color-bottom-row {
+    border-bottom: 1px solid rgba(10, 67, 85, 0.7);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}

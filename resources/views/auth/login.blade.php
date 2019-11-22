@@ -6,8 +6,21 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
+                <div class="float-left">
+                    <a href="{{ url('/') }}" class="text-title-navbar">
+                        <span><i class="fas fa-arrow-left"></i></span>&nbsp;
+                        <span><i class="fas fa-home"></i></span>
+                    </a>
+                </div>
                 <h4 class="text-center text-primary mt-5">{{ __('List of shopping') }}</h4>
-                <br>
+
+                <div class="row">
+                    <div class="col-md-12 color-bottom-row">
+                        <div class="float-right">
+                            <span class="color-login-text">Login</span>
+                        </div>
+                    </div>
+                </div>
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <div class="form-group mt-4">
