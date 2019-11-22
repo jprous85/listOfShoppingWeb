@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-sm navbar-light navbar-border-light" id="main-navbar">
     <div class="container">
         <a href="" class="text-title-navbar">List of Shopping</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -24,6 +25,27 @@
                         </li>
                     @endif
                 @else
+
+
+                <!-- Admin Zone TODO:: to modify -->
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">Lists</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="navbar-text text-muted mr-3 ml-3" id="link-navbar-item">/</a>
+                        <hr id="hr-navbar-item">
+                    </li>
+
+
+
+
                     <li class="nav-item">
                         <a href="" class="nav-link">
                             {{ ucfirst(Auth::user()->name) }} <span class="caret"></span>
@@ -31,8 +53,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="navbar-text text-muted" id="link-navbar-item">/</a>
-                        <hr id="hr-navbar-item">
+                        <a class="navbar-text text-muted mr-3 ml-3" id="link-navbar-item_II">/</a>
+                        <hr id="hr-navbar-item_II">
                     </li>
 
                     <li class="nav-item">
