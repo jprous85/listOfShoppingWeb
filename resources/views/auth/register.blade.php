@@ -51,8 +51,8 @@
                         @enderror
                     </div>
                     <div class="form-group mt-3">
-                        <label for="password-confirm">{{ __('Password') }}</label>
-                        <input type="password" class="form-control input-login-register" name="password-confirm" id="password-confirm" required>
+                        <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                        <input type="password" class="form-control input-login-register" name="password_confirmation" id="password-confirm" required>
                     </div>
 
                     <div class="form-group">
