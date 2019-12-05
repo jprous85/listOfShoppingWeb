@@ -3,18 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Role;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
+
+    public function view()
+    {
+        $user = Auth::user();
+        return view('role.role', compact('user'));
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return new JsonResponse([
+            'data' => $roles
+        ]);
     }
 
     /**
@@ -31,11 +42,19 @@ class RoleController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        try
+        {
+            Role::created($request->all());
+            return new JsonResponse(['status' => 'ok']);
+        }
+        catch (\Exception $e)
+        {
+            return new JsonResponse(['status' => 'ko']);
+        }
     }
 
     /**

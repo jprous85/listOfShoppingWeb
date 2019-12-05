@@ -6,11 +6,7 @@
             @component('layouts/components/navbar')@endcomponent
 
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        @yield('body')
-                    </div>
-                </div>
+                @yield('body')
             </div>
         </div>
     </div>
