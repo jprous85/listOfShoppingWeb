@@ -6,6 +6,7 @@ use App\Role;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Psy\Util\Json;
 
 class RoleController extends Controller
 {
@@ -15,6 +16,7 @@ class RoleController extends Controller
         $user = Auth::user();
         return view('role.role', compact('user'));
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,16 +31,6 @@ class RoleController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -48,57 +40,51 @@ class RoleController extends Controller
     {
         try
         {
-            Role::created($request->all());
-            return new JsonResponse(['status' => 'ok']);
+            $role = new Role();
+
+            $role->role = $request->role;
+            $role->save();
+
+            return new JsonResponse(['data' => 'ok']);
         }
         catch (\Exception $e)
         {
-            return new JsonResponse(['status' => 'ko']);
+            return new JsonResponse(['data' => $e]);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Role $role)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Role $role)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param $id
+     * @return JsonResponse
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            Role::findOrFail($id)->update($request->all());
+            return new JsonResponse(['data' => 'ok']);
+        }
+        catch (\Exception $e) {
+            return new JsonResponse(['data' => 'ko']);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return JsonResponse
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        try {
+            Role::findOrFail($id)->delete();
+            return new JsonResponse(['data' => 'ok']);
+        }
+        catch (\Exception $e) {
+            return new JsonResponse(['data' => 'ko']);
+        }
     }
 }

@@ -32,7 +32,7 @@
                         <a href="" class="nav-link">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Roles</a>
+                        <a href="{{ route('roles') }}" class="nav-link">Roles</a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link">Lists</a>
