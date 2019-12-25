@@ -29,7 +29,7 @@
 
                 <!-- Admin Zone TODO:: to modify -->
                     <li class="nav-item">
-                        <a href="" class="nav-link">Users</a>
+                        <a href="{{ route('users') }}" class="nav-link">Users</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('roles') }}" class="nav-link">Roles</a>

@@ -1,4 +1,5 @@
 @import 'main_content.css';
+@import 'roles.css';
 
 .content-objects {
     display: inline-flex;

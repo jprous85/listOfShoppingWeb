@@ -1,28 +1,28 @@
 @extends('home')
 @section('body')
-    <div class="row mt-4" id="bodyRoles" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <div class="row mt-4" id="bodyUsers" xmlns:v-on="http://www.w3.org/1999/xhtml">
         <div class="col-md-12">
             <div class="float-right">
                 <a href=""
                    class="btn btn-outline-primary"
                    data-toggle="modal"
-                   data-target="#createRoleModal">
-                    {{ __('create new role') }}
+                   data-target="#createUserModal">
+                    {{ __('create new user') }}
                 </a>
             </div>
         </div>
         <div class="col-md-12 mt-3">
-            <table class="table" v-if="roles.length != 0">
+            <table class="table" v-if="users.length != 0">
                 <thead class="thead-light">
                 <tr>
-                    <th class="roles-td-1">{{ __('name') }}</th>
-                    <th class="roles-td-2">{{ __('options') }}</th>
+                    <th class="users-td-1">{{ __('user') }}</th>
+                    <th class="users-td-2">{{ __('options') }}</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="r in roles.data">
-                    <td class="roles-td-1">@{{ r.role }}</td>
-                    <td class="roles-td-2">
+                <tr v-for="r in users.data">
+                    <td class="users-td-1">@{{ r.name }}</td>
+                    <td class="users-td-2">
                         <a href=""
                            @click.prevent="editData(r)"
                            class="btn btn-warning"
@@ -37,9 +37,6 @@
             </table>
             <div class="alert-warning" v-else>{{ __('no data available') }}</div>
         </div>
-        @component('role.create')@endcomponent
-        @component('role.update')@endcomponent
-        @component('role.delete')@endcomponent
     </div>
 
 @endsection
@@ -49,11 +46,14 @@
         let http = window.location;
         let id_value = "";
         let realApiPath = http.origin + "/api" + http.pathname + id_value + "?api_token=" + '{{ $user->api_token }}';
+
+        console.log(realApiPath);
+
         let vue = new Vue({
-            el: '#bodyRoles',
+            el: '#bodyUsers',
             data: {
-                roles: [],
-                inforoles: []
+                users: [],
+                infousers: []
             },
             created: function () {
                 this.getData();
@@ -62,12 +62,12 @@
                 getData() {
                     axios.get(realApiPath)
                         .then(res => {
-                            this.roles = res.data;
+                            this.users = res.data;
                         });
                 },
                 createData() {
                     axios.post(realApiPath, {
-                        'role': $('#name').val()
+                        'user': $('#name').val()
                     })
                         .then(res => {
                             // TODO:: make to toastr changes
@@ -77,13 +77,13 @@
                                 console.log(res.data);
                             }
                             this.getData();
-                            $('#createRoleModal').modal('hide');
+                            $('#createUserModal').modal('hide');
                         });
                 },
                 updatedData: function () {
-                    id_value = "/" + this.inforoles.id;
+                    id_value = "/" + this.infousers.id;
                     let newRealApiPath = http.origin + "/api" + http.pathname + id_value + "?api_token=" + '{{ $user->api_token }}';
-                    axios.post(newRealApiPath, this.inforoles).then(res => {
+                    axios.post(newRealApiPath, this.infousers).then(res => {
                         // TODO:: make to toastr changes
 
                         if (res.data === 'ok') {
@@ -93,11 +93,11 @@
                         }
                     });
                     id_value = "";
-                    this.inforoles = [];
+                    this.infousers = [];
                     $('#updateRoleModal').modal('hide');
                 },
                 deleteRole: function () {
-                    id_value = "/" + this.inforoles.id;
+                    id_value = "/" + this.infousers.id;
                     let newRealApiPath = http.origin + "/api" + http.pathname + id_value + "?api_token=" + '{{ $user->api_token }}';
                     axios.delete(newRealApiPath).then(res => {
                         // TODO:: make to toastr changes
@@ -107,19 +107,19 @@
                             console.log(res.data);
                         }
 
-                        $('#deleteModalRole').modal('hide');
+                        $('#deleteModalUser').modal('hide');
                         this.getData();
                     });
-                    this.inforoles = [];
+                    this.infousers = [];
                     id_value = "";
                 },
                 editData: function (e) {
-                    this.inforoles = e;
-                    $('#updateRoleModal').modal('show');
+                    this.infousers = e;
+                    $('#updateUserModal').modal('show');
                 },
                 deleteData: function (e) {
-                    this.inforoles = e;
-                    $('#deleteModalRole').modal('show');
+                    this.infousers = e;
+                    $('#deleteModalUser').modal('show');
                 }
             }
         });

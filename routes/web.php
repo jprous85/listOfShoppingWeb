@@ -23,3 +23,4 @@ Route::get('/redirect', 'Auth\LoginController@redirectToProvider')->name('redire
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/roles', 'RoleController@view')->name('roles');
+Route::get('/users', 'UserController@view')->name('users');
